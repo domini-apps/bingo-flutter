@@ -6,15 +6,37 @@ void main() {
 }
 
 class BingoAcme extends StatelessWidget {
-  const BingoAcme({super.key});
+  const BingoAcme({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bingo Acme',
       theme: ThemeData.light(),
-      home: Scaffold(body: BingoCardScreen(),),
+      home: Scaffold(
+        body: BingoCardScreen(
+          rows: 4,
+          columns: 4,
+          numbers: [
+            11,
+            2,
+            3,
+            34,
+            5,
+            6,
+            72,
+            8,
+            75,
+            10,
+            10,
+            12,
+            13,
+            20,
+            22,
+            16,
+          ],
+        ),
+      ),
     );
   }
 }
