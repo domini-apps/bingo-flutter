@@ -11,7 +11,12 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text('Hello World')),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/background.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }
