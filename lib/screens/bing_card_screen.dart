@@ -7,11 +7,11 @@ class BingoCardScreen extends StatefulWidget {
   final List<int> numbers; // Lista de números para preencher a tabela de bingo
 
   const BingoCardScreen({
-    Key? key,
+    super.key,
     this.rows = 4,
     this.columns = 4,
     required this.numbers, // Recebe a lista de números como parâmetro
-  }) : super(key: key);
+  });
 
   @override
   State<BingoCardScreen> createState() => _BingoCardScreenState();
@@ -96,7 +96,13 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
                                   onTap: () {
                                     _toggleCellPressed(i * widget.columns + j);
                                     if (_isAllCellsPressed()) {
-                                      print("BINGO! PARABENS");
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'BINGO! Parabéns você foi o ganhador.'),
+                                        ),
+                                      );
                                     }
                                   },
                                   child: Container(
@@ -104,12 +110,12 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
                                     decoration: BoxDecoration(
                                       border: Border(
                                         right: j < widget.columns - 1
-                                            ? BorderSide(
+                                            ? const BorderSide(
                                                 color: ThemeColors.secondary,
                                                 width: 1)
                                             : BorderSide.none,
                                         bottom: i < widget.rows - 1
-                                            ? BorderSide(
+                                            ? const BorderSide(
                                                 color: ThemeColors.secondary,
                                                 width: 1)
                                             : BorderSide.none,
@@ -126,7 +132,7 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
                                                 child: Container(
                                                   width: 70.0,
                                                   height: 70.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                       boxShadow: [
                                                         BoxShadow(
                                                             color: ThemeColors
@@ -144,7 +150,7 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
                                                 _filledNumbers[
                                                         i * widget.columns + j]
                                                     .toString(),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontFamily: 'Akshar',
                                                   fontSize: 32,
                                                   fontWeight: FontWeight.bold,
@@ -157,7 +163,7 @@ class _BingoCardScreenState extends State<BingoCardScreen> {
                                             _filledNumbers[
                                                     i * widget.columns + j]
                                                 .toString(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontFamily: 'Akshar',
                                               fontSize: 32,
                                               fontWeight: FontWeight.bold,
